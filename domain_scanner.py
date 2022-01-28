@@ -65,7 +65,7 @@ class DomainScanner:
         try:
             socket.setdefaulttimeout(2.0)
             socket.getaddrinfo(domain, 80)
-        except socket.gaierror:
+        except Exception:
             pass
         else:
             with self.__lock:
