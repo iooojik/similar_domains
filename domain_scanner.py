@@ -2,7 +2,7 @@ import socket
 import string
 import threading
 import time
-
+import re
 import homoglyphs as hg
 
 
@@ -16,7 +16,7 @@ class DomainScanner:
 
     def __init__(self, domain):
         self.get_domain_symbols()
-        self.keyword = domain
+        self.keyword = ''.join(re.findall(r"[a-zA-zа-яА-я0-9-]", domain))
 
     def get_domain_symbols(self):
         self.domain_symbols = (sorted(set(string.ascii_lowercase).union(
